@@ -10,24 +10,16 @@ const it = (msg, fn) => describe('  ' + msg, fn)
 //   })
 // })
 
-const expect = (value) => { return /* object with toBe property */ }
+const expect = (exp) => matchers(exp)
 
 const matchers = (exp) => ({
   toBe: (assertion) => {
     if (exp === assertion) {
-      console.log('pass')
+      console.log('nice one geezer')
       return true
     } else {
-      console.log('fail')
+      console.log('try again buddy')
       return false
     }
   }
 })
-
-
-module.exports = {
-  describe,
-  expect,
-  it,
-  matchers
-}
