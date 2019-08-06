@@ -9,11 +9,25 @@ Library.prototype.add = function (note) {
 Library.prototype.viewAllNotes = function () {
 
   return this._notes.map(function(note){
-    return note.getNote().substr(0,20)
+    return note.getNote()
 
   })
 };
 
+Library.prototype.viewAllAbbreviatedNotes = function () {
+
+  return this._notes.map(function(note){
+    return note.abbreviatedNote()
+
+  })
+};
+
+Library.prototype.findNote = function (noteBody) {
 
 
-// .substr(0,20)
+  return this._notes.map(function(note){
+    if (note.abbreviatedNote() === noteBody){
+      return note.getNote()
+    }
+  })
+};

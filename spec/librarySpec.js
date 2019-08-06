@@ -1,7 +1,27 @@
-const firstNote = { getNote: "My first note" }
-const secondNote = { getNote: "This is a note which is longer than 20 chars"}
-const thirdNote = { getNote: "Another one"}
-const fourthNote = { getNote: "This note is bloody long, way longer than 20 chars"}
+var firstNote = { abbreviatedNote : function() {
+  return "My first note"
+}, getNote : function() {
+  return "Another note here we go"} }
+
+
+var secondNote = { getNote : function() {
+  return "This is a note which is longer than 20 chars"
+}, abbreviatedNote : function() {
+  return "Short note"} }
+
+
+var thirdNote = { getNote : function() {
+  return "Another one"
+}}
+
+
+var fourthNote = { getNote : function() {
+  return "This note is bloody long, way longer than 20 chars"
+}}
+var abbreviatedNoteAnother = { abbreviatedNote : function() {
+  return "Another one"
+}, getNote : function() {
+  return "Another one here which is more than 20 chars"}}
 
 
 describe('#add', () => {
@@ -9,35 +29,30 @@ describe('#add', () => {
     let library = new Library;
 
     library.add(firstNote)
-    console.log(library._notes)
 
-    expect(library.viewAllNotes()).toBe("My first note")
+    expect(library.viewAllNotes()).toBe("Another note here we go")
   })
 })
 
-describe('#add', () => {
-  it('returns the first 20 chars', () => {
+describe('#viewAllNotes', () => {
+  it('returns all the notes added', () => {
     let library = new Library;
 
     library.add(secondNote)
-    console.log(library._notes)
+    library.add(thirdNote)
 
-    expect(library.viewAllNotes()).toBe("This is a note which")
+    expect(library.viewAllNotes()).toBe("This is a note which is longer than 20 chars,Another one")
   })
 })
 
-describe('#add', () => {
-  it('Returns multiple abbreviated notes', () => {
+describe('#findNote', () => {
+  it('returns all the notes added', () => {
     let library = new Library;
 
     library.add(firstNote)
     library.add(secondNote)
-    library.add(thirdNote)
-    library.add(fourthNote)
+    library.add(abbreviatedNoteAnother)
 
-    console.log(library._notes)
-    console.log(library.viewAllNotes() + "this was printed")
-    // expect(library._notes.length()).toBe(4)
-    expect(library.viewAllNotes()).toBe("My first note")
+    expect(library.findNote("Another one")).toBe("Another one here which is more than 20 chars")
   })
 })
