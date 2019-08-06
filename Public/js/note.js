@@ -1,5 +1,5 @@
-function Note(body) {
-  this._body = body
+function Note() {
+  this._body = ""
 }
 
 Note.prototype.create = function(string) {
