@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="shortcut icon" type="image/png" href="http://hemser.com/hemser/hjdr.jpg"/>
     <script src="js/test.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -11,43 +12,47 @@
 
   <body>
     <h1 style="text-align: center;">
-    <a href="#create">Create Note</a> |
-    <a href="#view">View All Notes</a></h1>
+    <a id="create-note" onclick="showNoteEntryForm()" href="#create">Create Note</a> |
+    <a id="view-notes" href="#view">View All Notes</a></h1>
 
     <h1 style="text-align: center;">
       <div id="note"></div>
+      <div id="view-all"></div>
     </h1>
 
     <div class="myDiv">
-      <div class="bg"></div>
+    <div class="bg"></div>
 
-    <div id="create">
+    <div id="create" style="display: none;">
       <form style="text-align: center;">
-      <textarea name="message" rows="10" cols="30" placeholder="add notes here" name"Note-Body"></textarea>
-      <input type="submit" value="Create">
-    </form></div>
+        <textarea name="message" rows="10" cols="30" placeholder="add notes here" name"Note-Body"></textarea>
+        <input type="submit" value="Create">
+      </form>
+    </div>
+
     <script>
 
     let note = new Note()
 
-      makeUrlChangeShowNoteForCurrentPage();
+      // function showNoteEntryForm() {
+      //     document
+      //       .getElementById("create-note")
+      //       .addEventListener("click", function(clickEvent) {
+      //         clickEvent.preventDefault();
+      //         document
+      //     .getElementById("note")
+      //     .innerHTML = "hello";
+      //   });
+      // };
 
-      function makeUrlChangeShowNoteForCurrentPage() {
-        window.addEventListener("hashchange", function () {
-          document
-            .getElementById("note")
-            .innerHTML = note.noteList();
-        });
-      };
-      function makeTigerLinkClickSayTiger() {
-            document
-              .getElementById("tiger-link")
-              .addEventListener("click", function(clickEvent) {
-                clickEvent.preventDefault();
-                sayTiger();
-              });
-        });
-      });
+      function showNoteEntryForm() {
+        var x = document.getElementById("create");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
 
     </script>
 
