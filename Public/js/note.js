@@ -1,11 +1,15 @@
 function Note() {
-
+  this._body = ""
 }
 
-Note.prototype.create = function () {
-
+Note.prototype.create = function(string) {
+  this._body = string
 };
 
 Note.prototype.getNote = function () {
-  return "This is my first note which is definitely over 20 characters long"
+  return this._body
+};
+
+Note.prototype.abbreviatedNote = function () {
+  return this._body.substr(0,20)
 };
