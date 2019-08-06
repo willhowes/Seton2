@@ -23,11 +23,11 @@ Library.prototype.viewAllAbbreviatedNotes = function () {
 };
 
 Library.prototype.findNote = function (noteBody) {
-
-
-  return this._notes.map(function(note){
+  foundNote = []
+  this._notes.map(function(note){
     if (note.abbreviatedNote() === noteBody){
-      return note.getNote()
+      foundNote.push(note.getNote())
     }
   })
+  return foundNote.join('')
 };

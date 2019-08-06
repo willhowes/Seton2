@@ -1,3 +1,5 @@
+// SPIES...
+
 var firstNote = { abbreviatedNote : function() {
   return "My first note"
 }, getNote : function() {
@@ -23,6 +25,7 @@ var abbreviatedNoteAnother = { abbreviatedNote : function() {
 }, getNote : function() {
   return "Another one here which is more than 20 chars"}}
 
+// TESTS...
 
 describe('#add', () => {
   it('Adds a note to the library', () => {

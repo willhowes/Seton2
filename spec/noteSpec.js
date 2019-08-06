@@ -10,6 +10,6 @@ describe('#abbreviatedNote', () => {
   it('takes the number of chatacters to 20', () => {
     note = new Note()
     note.create("This is my first note which is definitely over 20 characters long")
-    expect(note.abbreviatedNote()).toBe("This is my first not")
+    expect(note.abbreviatedNote()).toBe("This is my first not...")
   })
 })

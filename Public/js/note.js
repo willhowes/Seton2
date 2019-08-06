@@ -11,5 +11,5 @@ Note.prototype.getNote = function () {
 };
 
 Note.prototype.abbreviatedNote = function () {
-  return this._body.substr(0,20)
+  return this._body.substr(0,20) + "..."
 };
