@@ -1,8 +1,8 @@
 
 class Note {
-  constructor() {}
-  
+  constructor() {};
+
   noteList() {
-    document.write('bollocks')
-  }
-}
+    return "I hate testing front end shit"
+  };
+};

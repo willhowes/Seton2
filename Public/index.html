@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <script type="text/javascript" src="js/test.js"></script>
-      <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <script src="js/test.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <meta charset="utf-8">
     <title>Frontend, single page app</title>
-
+    <h1 style="text-align: center;">Note App</h1>
   </head>
 
   <body>
-    <h1 style="text-align: center;"><a href="#notes">Create A Note</a>|
-    <a href="#library">Show All Notes</a>
-    <div id="thing"></div></h1>|
-    <div class="myDiv"></html>
-    <div class="bg"></div>
+    <h1 style="text-align: center;">
+    <a href="#create">Create Note</a> |
+    <a href="#view">View All Notes</a></h1>
 
+    <h1 style="text-align: center;">
+      <div id="note"></div>
+    </h1>
+
+    <div class="myDiv">
+      <div class="bg"></div>
+
+    <div id="create">
+      <form style="text-align: center;">
+      <textarea name="message" rows="10" cols="30" placeholder="add notes here" name"Note-Body"></textarea>
+      <input type="submit" value="Create">
+    </form></div>
     <script>
 
-      let note = new Note()
-        makeUrlChangeShowThingForCurrentPage();
-  
-        function makeUrlChangeShowThingForCurrentPage() {
-          window.addEventListener("hashchange", showThingForCurrentPage);
-        };
-  
-        function showThingForCurrentPage() {
-          showThing(getThingFromUrl(window.location));
-        };
-  
-        function getThingFromUrl(location) {
-          return location.hash.split("#")[1];
-        };
-  
-        function showThing(thing) {
-          document
-            .getElementById("thing")
-            .innerHTML = note.noteList();
-            
-        };
+    let note = new Note()
 
-      </script>
+      makeUrlChangeShowNoteForCurrentPage();
+
+      function makeUrlChangeShowNoteForCurrentPage() {
+        window.addEventListener("hashchange", function () {
+          document
+            .getElementById("note")
+            .innerHTML = note.noteList();
+        });
+      };
+      function makeTigerLinkClickSayTiger() {
+            document
+              .getElementById("tiger-link")
+              .addEventListener("click", function(clickEvent) {
+                clickEvent.preventDefault();
+                sayTiger();
+              });
+        });
+      });
+
+    </script>
 
   </body>
-
+</html>
