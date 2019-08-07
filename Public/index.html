@@ -29,7 +29,7 @@
       </form>
     </div>
     
-    <h3><div id="name" style="text-align: center; line-height: 30pt;"></div><ul></ul></div></h3>
+    <h3><div id="name" style="text-align: center; line-height: 30pt; display: none"></div><ul style="list-style-type: none;"></ul></div></h3>
     
     <script>
 
@@ -59,13 +59,28 @@
           }
         }
 
+        function showLibrary() {
+        let x = document.getElementById("name");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+
         function viewAllNotes() {
+              removeAll();
               let abbreviatedNotes = library.viewAllAbbreviatedNotes()
               for (let I = 0; I < abbreviatedNotes.length; I++) {
-              let nameList = "<li>" + abbreviatedNotes[I] + "</li>";
+              let nameList = "<li style='list-style-type: none;'>" + abbreviatedNotes[I] + "</li>";
               console.log(nameList)
               document.getElementById("name").innerHTML += nameList;
               }
+              showLibrary();
+        }
+
+        function removeAll(){
+        document.getElementById("name").innerHTML = "";
         }
 
     </script>
