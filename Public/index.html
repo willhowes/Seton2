@@ -72,7 +72,7 @@
               removeAll();
               let abbreviatedNotes = library.viewAllAbbreviatedNotes()
               for (let I = 0; I < abbreviatedNotes.length; I++) {
-              let nameList = "<li style='list-style-type: none;'>" + abbreviatedNotes[I] + "</li>";
+              let nameList = "<li style='list-style-type: none;'>" + "<a href='#" + I + "'>" + abbreviatedNotes[I] + "</a>" + "</li>";
               console.log(nameList)
               document.getElementById("name").innerHTML += nameList;
               }
