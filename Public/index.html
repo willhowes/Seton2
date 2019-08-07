@@ -77,11 +77,17 @@
               document.getElementById("name").innerHTML += nameList;
               }
               showLibrary();
+              findNoteID();
         }
 
         function removeAll(){
         document.getElementById("name").innerHTML = "";
-        }
+        } 
+
+        function findNoteID() {
+          let string = window.location.hash.split("#")[1];
+          console.log(string)
+        };
 
     </script>
 
