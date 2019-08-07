@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="shortcut icon" type="image/png" href="http://hemser.com/hemser/hjdr.jpg"/>
-    <script src="js/test.js"></script>
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="js/library.js"></script>
+    <script src="js/note.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <meta charset="utf-8">
     <title>Frontend, single page app</title>
@@ -25,25 +24,30 @@
 
     <div id="create" style="display: none;">
       <form style="text-align: center;">
-        <textarea name="message" rows="10" cols="30" placeholder="add notes here" name"Note-Body"></textarea>
-        <input type="submit" value="Create">
+        <textarea rows="10" cols="30" placeholder="add notes here" id="Note-Body"></textarea>
+        <input id="create-button" type="submit" value="Create">
       </form>
     </div>
 
     <script>
 
-    let note = new Note()
+    let library = new Library()
 
-      // function showNoteEntryForm() {
-      //     document
-      //       .getElementById("create-note")
-      //       .addEventListener("click", function(clickEvent) {
-      //         clickEvent.preventDefault();
-      //         document
-      //     .getElementById("note")
-      //     .innerHTML = "hello";
-      //   });
-      // };
+
+  AddNote() 
+
+      function AddNote() {
+          document
+            .getElementById("create-button")
+            .addEventListener("click", function(clickEvent) {
+              clickEvent.preventDefault();
+              let user_note = document.getElementById('Note-Body').value;
+              let note = new Note()
+              note.create(user_note)
+              library.add(note)
+              console.log("AddNote got called")
+        });
+      };
 
       function showNoteEntryForm() {
         var x = document.getElementById("create");
