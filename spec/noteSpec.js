@@ -1,3 +1,4 @@
+
 describe('#getNote', () => {
   it('born with a body', () => {
     note = new Note()
