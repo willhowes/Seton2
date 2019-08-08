@@ -2,8 +2,9 @@ function Note() {
   this._body = ""
 }
 
-Note.prototype.create = function(string) {
+Note.prototype.create = function(string, library) {
   this._body = string
+  library.add(this)
 };
 
 Note.prototype.getNote = function () {
