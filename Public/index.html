@@ -12,7 +12,7 @@
   <body>
     <h1 style="text-align: center;">
     <a id="create-note" onclick="showNoteEntryForm()" href="#create">Create Note</a> |
-    <a id="view-notes" href="#view">View All Notes</a></h1>
+    <a id="view-notes" onclick="viewAllNotesHTML()" href="#view">View All Notes</a></h1>
 
     <h1 style="text-align: center;">
       <div id="note"></div>
@@ -29,12 +29,19 @@
       </form>
     </div>
 
+    <h3><div id="name" style="text-align: center; line-height: 30pt; display: none"></div><ul style="list-style-type: none;"></ul></div></h3>
+    <br>
+    <br>
+    <br>
+    <center><h4<span id="fullnote"> </span></h4></center>
+    <!-- <h4><div id="fullnote" style="text-align: center; display: none"></div></h4> -->
+
     <script>
 
     let library = new Library()
 
 
-  AddNote() 
+  AddNote()
 
       function AddNote() {
           document
@@ -45,18 +52,72 @@
               let note = new Note()
               note.create(user_note)
               library.add(note)
+              console.log(library._notes)
               console.log("AddNote got called")
         });
       };
 
       function showNoteEntryForm() {
-        var x = document.getElementById("create");
+        let x = document.getElementById("create");
           if (x.style.display === "none") {
             x.style.display = "block";
           } else {
             x.style.display = "none";
           }
         }
+
+        function showWholeNote() {
+          let x = document.getElementById("fullnote");
+            if (x.style.display === "none") {
+              x.style.display = "block";
+            } else {
+              x.style.display = "none";
+            }
+          }
+
+        function showLibrary() {
+        let x = document.getElementById("name");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+
+        function viewAllNotesHTML() {
+              // removeFullNote()
+              // removeAll();
+              let abbreviatedNotes = library.viewAllAbbreviatedNotes()
+              for (let I = 0; I < abbreviatedNotes.length; I++) {
+              let nameList = "<li style='list-style-type: none;'>" + "<a href='#" + I + "' id='" + I + "'>" + abbreviatedNotes[I] + "</a>" + "</li>";
+              document.getElementById("name").innerHTML += nameList;
+              }
+              showLibrary();
+              changeURL();
+
+        }
+        // Below removes the listed notes?
+        // function removeAll(){
+        // document.getElementById("name").innerHTML = "";
+        // }
+
+        function removeFullNote(){
+        document.getElementById("fullnote").innerHTML = "";
+        }
+
+        function changeURL() {
+
+         window.addEventListener('hashchange', function() {
+           note = location.hash.split("#")[1]
+           // checking that it is an integer
+           if (isNaN(note) === false) {
+             document.getElementById("fullnote").textContent = library.viewAllNotes()[note];
+
+             // showWholeNote()
+           }
+         })
+       }
+
 
     </script>
 

@@ -3,6 +3,7 @@ function Library() {
 }
 
 Library.prototype.add = function (note) {
+  console.log("hiiii")
   this._notes.push(note)
 };
 
@@ -24,10 +25,14 @@ Library.prototype.viewAllAbbreviatedNotes = function () {
 
 Library.prototype.findNote = function (noteBody) {
   foundNote = []
+
+  console.log(this._notes + ' raw notes from lib')
+
   this._notes.map(function(note){
     if (note.abbreviatedNote() === noteBody){
       foundNote.push(note.getNote())
     }
   })
+  console.log(foundNote)
   return foundNote.join('')
 };

@@ -13,3 +13,6 @@ Note.prototype.getNote = function () {
 Note.prototype.abbreviatedNote = function () {
   return this._body.substr(0,20) + "..."
 };
+
+// var note = new Note
+// note.create("hello world there")
