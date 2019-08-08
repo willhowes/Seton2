@@ -11,10 +11,6 @@
 
   <body>
     <h1 style="text-align: center;">
-    <a id="create-note" onclick="showNoteEntryForm()" href="#create">Create Note</a> |
-    <a id="view-notes" onclick="viewAllNotesHTML()" href="#view">View All Notes</a></h1>
-
-    <h1 style="text-align: center;">
       <div id="note"></div>
       <div id="view-all"></div>
     </h1>
@@ -22,19 +18,18 @@
     <div class="myDiv">
     <div class="bg"></div>
 
-    <div id="create" style="display: none;">
+    <div id="create" style="display: block;">
       <form style="text-align: center;">
         <textarea rows="10" cols="30" placeholder="add notes here" id="Note-Body"></textarea>
         <input id="create-button" type="submit" value="Create">
       </form>
     </div>
 
-    <h3><div id="name" style="text-align: center; line-height: 30pt; display: none"></div><ul style="list-style-type: none;"></ul></div></h3>
+    <h3><div id="name" style="text-align: center; line-height: 30pt; display: block"></div><ul style="list-style-type: none;"></ul></div></h3>
     <br>
     <br>
     <br>
     <center><h4<span id="fullnote"> </span></h4></center>
-    <!-- <h4><div id="fullnote" style="text-align: center; display: none"></div></h4> -->
 
     <script>
 
@@ -52,54 +47,19 @@
               let note = new Note()
               note.create(user_note)
               library.add(note)
-              console.log(library._notes)
-              console.log("AddNote got called")
+              viewAllNotesHTML()
         });
       };
 
-      function showNoteEntryForm() {
-        let x = document.getElementById("create");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-
-        function showWholeNote() {
-          let x = document.getElementById("fullnote");
-            if (x.style.display === "none") {
-              x.style.display = "block";
-            } else {
-              x.style.display = "none";
-            }
-          }
-
-        function showLibrary() {
-        let x = document.getElementById("name");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
-        }
-
         function viewAllNotesHTML() {
-              // removeFullNote()
-              // removeAll();
               let abbreviatedNotes = library.viewAllAbbreviatedNotes()
+              let nameList = []
               for (let I = 0; I < abbreviatedNotes.length; I++) {
-              let nameList = "<li style='list-style-type: none;'>" + "<a href='#" + I + "' id='" + I + "'>" + abbreviatedNotes[I] + "</a>" + "</li>";
-              document.getElementById("name").innerHTML += nameList;
+                nameList.push("<li style='list-style-type: none;'>" + "<a href='#" + I + "' id='" + I + "'>" + abbreviatedNotes[I] + "</a>" + "</li>")
               }
-              showLibrary();
+              document.getElementById("name").innerHTML = nameList.join('')
               changeURL();
-
         }
-        // Below removes the listed notes?
-        // function removeAll(){
-        // document.getElementById("name").innerHTML = "";
-        // }
 
         function removeFullNote(){
         document.getElementById("fullnote").innerHTML = "";
@@ -112,8 +72,6 @@
            // checking that it is an integer
            if (isNaN(note) === false) {
              document.getElementById("fullnote").textContent = library.viewAllNotes()[note];
-
-             // showWholeNote()
            }
          })
        }
