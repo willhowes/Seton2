@@ -35,7 +35,6 @@
 
     let library = new Library()
 
-
   AddNote()
 
       function AddNote() {
@@ -45,8 +44,7 @@
               clickEvent.preventDefault();
               let user_note = document.getElementById('Note-Body').value;
               let note = new Note()
-              note.create(user_note)
-              library.add(note)
+              note.create(user_note, library)
               viewAllNotesHTML()
         });
       };
@@ -75,9 +73,6 @@
            }
          })
        }
-
-
     </script>
-
   </body>
 </html>
