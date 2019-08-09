@@ -3,8 +3,8 @@ function Note() {
 }
 
 Note.prototype.create = function(string, library) {
-  this._body = string
   library.add(this)
+  return this._body = string
 };
 
 Note.prototype.getNote = function () {
@@ -14,6 +14,3 @@ Note.prototype.getNote = function () {
 Note.prototype.abbreviatedNote = function () {
   return this._body.substr(0,20) + "..."
 };
-
-// var note = new Note
-// note.create("hello world there")

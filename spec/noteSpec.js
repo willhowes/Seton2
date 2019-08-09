@@ -1,8 +1,11 @@
+var library = { add : function() {
+  return "note"
+}}
 
 describe('#getNote', () => {
   it('born with a body', () => {
     note = new Note()
-    note.create("This is my first note which is definitely over 20 characters long")
+    note.create("This is my first note which is definitely over 20 characters long", library)
     expect(note.getNote()).toBe("This is my first note which is definitely over 20 characters long")
   })
 })
@@ -10,7 +13,7 @@ describe('#getNote', () => {
 describe('#abbreviatedNote', () => {
   it('takes the number of chatacters to 20', () => {
     note = new Note()
-    note.create("This is my first note which is definitely over 20 characters long")
+    note.create("This is my first note which is definitely over 20 characters long", library)
     expect(note.abbreviatedNote()).toBe("This is my first not...")
   })
 })
@@ -18,7 +21,7 @@ describe('#abbreviatedNote', () => {
 describe('#thisIsAFailingFunction', () => {
   it('this will most certainly fail', () => {
     note = new Note()
-    note.create("This is my first note which is definitely over 20 characters long")
+    note.create("This is my first note which is definitely over 20 characters long", library)
     expect(note.abbreviatedNote()).toBe("This is not mine...")
   })
 })
